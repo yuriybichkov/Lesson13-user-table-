@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users Table</title>
+    <style type="text/css">
+        #table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 75%;
+        }
+        #table td, #table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        #table tr:nth-child(even){background-color: #f2f2f2;}
+
+        #table tr:hover {background-color: #ddd;}
+        #table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+        .modal {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: burlywood;
+            z-index: 100;
+            align-content: center;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888888;
+            height: 30%;
+            width: 30%;
+            font-size: 18px;
+        }
+
+        .close {
+            color: crimson;
+            float: right;
+        }
+    </style>
+
+</head>
+<body>
+
+<table id="table">
+    <thead>
+    <tr>
+        <th class="table-head" data-name="name">Name</th>
+        <th class="table-head" data-name="username">Username</th>
+        <th class="table-head" data-name="email">Email</th>
+        <th class="table-head" data-name="website">Website</th>
+    </tr>
+    </thead>
+    <tbody id="user-tbody"></tbody>
+</table>
+
+<div id="myModal" class="modal">
+    <div id="modCont" class="modal-content">
+        <button id="close" class="close">OK</button>
+    </div>
+</div>
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
