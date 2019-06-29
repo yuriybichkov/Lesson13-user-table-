@@ -56,7 +56,29 @@
 
     const modal = document.getElementById('myModal');
     const closeBtn = document.getElementById('close');
-    console.log(modal);
+
+
+    /*document.querySelector('tbody')
+        .addEventListener('click', evt => {
+            let div = document.createElement('div');
+            modCont.appendChild(div);
+            div.setAttribute('id', 'dataMod');
+
+            const dId = parseFloat(evt.target.parentNode.getAttribute('id'));
+            console.log(dId);
+            for (let keyObj of users) {
+                let tag = '';
+                if (keyObj.id === dId) {
+                    for (let key in keyObj) {
+                         tag +=`<li>${key}: ${keyObj[key]}</li>`;
+                        console.log(tag);
+                    }
+                    div.innerHTML=`<ul>${tag}</ul>`;
+                    console.log(div.innerHTML);
+                    modal.style.display = "block";
+                }
+            }
+        });*/
 
 
     document.querySelector('tbody')
@@ -66,11 +88,28 @@
             div.setAttribute('id', 'dataMod');
 
             const dId = parseFloat(evt.target.parentNode.getAttribute('id'));
+            let tag = '';
+
+
+            function userMod(obj) {
+
+                for (let key in obj) {
+                    if (typeof (obj[key]) === "object") {
+                        tag += `<ul><li>${key}</li></ul>`
+                        userMod(obj[key]);
+                    } else {
+                        tag += `<li>${key}: ${obj[key]}</li>`;
+                    }
+                }
+            }
+
+
             for (let keyObj of users) {
                 if (keyObj.id === dId) {
-                    for (let key in keyObj) {
-                        div.innerHTML +=`${key}: ${keyObj[key]};<br>`;
-                    }
+                    console.log(keyObj);
+                    userMod(keyObj);
+
+                    div.innerHTML = `<ul>${tag}</ul>`;
                     modal.style.display = "block";
                 }
             }
